@@ -6,7 +6,7 @@ public class GroundCollisionController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("collision with " + collision.gameObject.name);
+        //Debug.Log("ground collision with " + collision.gameObject.name);
 
         menuPanel.SetActive(true);
     }

@@ -1,0 +1,36 @@
+﻿using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
+public class UIController : MonoBehaviour
+{
+    public Text ScoreL;
+    private static int scoreValue = 0;
+    private static bool changeScoreValue = false;
+
+    public void RestartButton()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void ExitButton()
+    {
+        #if UNITY_ANDROID
+        Application.Quit();
+        #endif
+    }
+
+    public static void AddCoin()
+    {
+        scoreValue = ++scoreValue;
+        changeScoreValue = true;
+    }
+
+    private void Update()
+    {
+        if (changeScoreValue)
+        {
+            ScoreL.text = scoreValue.ToString();
+            changeScoreValue = false;
+        }
+    }
+}

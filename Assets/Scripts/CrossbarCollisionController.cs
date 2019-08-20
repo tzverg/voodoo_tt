@@ -2,25 +2,12 @@
 
 public class CrossbarCollisionController : MonoBehaviour
 {
-    private PlayerController playerC;
-
-    private void Start()
-    {
-        playerC = GetComponentInParent<PlayerController>();
-
-        if (playerC == null)
-        {
-            Debug.LogError("playerC not exist");
-        }
-    }
+    [SerializeField] private PlayerController playerC;
 
     private void GrappleCrossbar(Collision collision)
     {
-        if (collision.gameObject.tag == "crossbar")
-        {
-            Debug.Log("collision with " + collision.gameObject.tag);
-            playerC.crossbar = collision.gameObject;
-        }
+        Debug.Log(gameObject.name + " collision with " + collision.gameObject.name);
+        playerC.crossbar = gameObject;
     }
 
     private void OnCollisionEnter(Collision collision)
