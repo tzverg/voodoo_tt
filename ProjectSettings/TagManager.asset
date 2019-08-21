@@ -6,6 +6,7 @@ TagManager:
   tags:
   - player_hand
   - crossbar
+  - box
   layers:
   - Default
   - TransparentFX

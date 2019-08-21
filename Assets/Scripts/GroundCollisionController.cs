@@ -7,12 +7,33 @@ public class GroundCollisionController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         //Debug.Log("ground collision with " + collision.gameObject.name);
-
-        if (!menuPanel.activeSelf && collision.gameObject.name == "LeftFoot")
+        if (collision.gameObject.tag != "box")
         {
-            UIController.AddSoresNum(20);
-        }
+            if (!menuPanel.activeSelf)
+            {
+                switch (collision.gameObject.name)
+                {
+                    case "LeftLowerLeg":
+                        UIController.AddSoresNum(20);
+                        break;
+                    case "RightLowerLeg":
+                        UIController.AddSoresNum(20);
+                        break;
+                    case "LeftHand":
+                        UIController.AddSoresNum(10);
+                        break;
+                    case "RightHand":
+                        UIController.AddSoresNum(10);
+                        break;
+                    case "Hips":
+                        UIController.AddSoresNum(5);
+                        break;
+                    default:
+                        break;
+                }
+            }
 
-        menuPanel.SetActive(true);
+            menuPanel.SetActive(true);
+        }
     }
 }
