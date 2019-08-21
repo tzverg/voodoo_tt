@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\GroundCollisionController.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\UIController.cs" />
+    <None Include="Assets\Shaders\Skybox Cubemap Extended.shader" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>D:/work/unity/voodoo_test_task/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
