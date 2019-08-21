@@ -92,11 +92,12 @@ public class PlayerController : MonoBehaviour
         {
             for (int i = 0; i < Input.touchCount; ++i)
             {
-                if (Input.GetTouch(i).phase == TouchPhase.Stationary)
+                var currentTouch = Input.GetTouch(i);
+                if (currentTouch.phase == TouchPhase.Stationary)
                 {
                     TryFlip();
                 }
-                if (Input.GetTouch(i).phase == TouchPhase.Ended)
+                if (currentTouch.phase == TouchPhase.Ended)
                 {
                     ReleaseCrossbar();
                 }
