@@ -6,8 +6,7 @@ public class CrossbarCollisionController : MonoBehaviour
 
     private void GrappleCrossbar(Collision collision)
     {
-        Debug.Log(gameObject.name + " collision with " + collision.gameObject.name);
-        playerC.crossbar = gameObject;
+        playerC.GrappleCrossbar(gameObject);
     }
 
     private void OnCollisionEnter(Collision collision)

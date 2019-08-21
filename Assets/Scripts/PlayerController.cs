@@ -2,22 +2,61 @@
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float forceStaticValue;
-    [SerializeField] private float forceRandomModifier;
+    [SerializeField] private float forceY;
+    [SerializeField] private float forceZ;
 
     [SerializeField] private Rigidbody hips;
-    [SerializeField] private Rigidbody leftFeet;
-    [SerializeField] private Rigidbody rightFeet;
+    [SerializeField] private Rigidbody leftHand;
+    [SerializeField] private Rigidbody rightHand;
+    [SerializeField] private Rigidbody leftUpperLeg;
+    [SerializeField] private Rigidbody rightUpperLeg;
 
-    public GameObject crossbar;
+    private Vector3 leftHandCA;
+    private Vector3 rightHandCA;
+
+    private Transform leftHandDefaultTR;
+    private Transform rightHandDefaultTR;
+
+    private GameObject crossbar = null;
+
+    private void Start()
+    {
+        leftHandCA = new Vector3(-0.08F, -0.06F, 0F);
+        rightHandCA = new Vector3(0.08F, -0.06F, 0F);
+    }
+
+    public void GrappleCrossbar(GameObject targetCrossbar)
+    {
+        if (crossbar == null)
+        {
+            foreach (HingeJoint targetJoint in targetCrossbar.GetComponents<HingeJoint>())
+            {
+                if (targetJoint.axis.y == 1)
+                {
+                    targetJoint.connectedBody = leftHand;
+                    targetJoint.connectedAnchor = leftHandCA;
+                }
+                else if (targetJoint.axis.y == -1)
+                {
+                    targetJoint.connectedBody = rightHand;
+                    targetJoint.connectedAnchor = rightHandCA;
+                }
+            }
+
+            UIController.AddSoresNum(10);
+
+            crossbar = targetCrossbar;
+        }
+    }
 
     private void TryFlip()
     {
-        float randomModifier = Random.value * forceRandomModifier;
-
-        hips.AddRelativeForce(0F, 0F, forceStaticValue + randomModifier, ForceMode.Force);
-        leftFeet.AddRelativeForce(0F, 0F, forceStaticValue + randomModifier, ForceMode.Force);
-        rightFeet.AddRelativeForce(0F, 0F, forceStaticValue + randomModifier, ForceMode.Force);
+        if (crossbar != null)
+        {
+            hips.AddRelativeForce(0F, forceY, forceZ, ForceMode.Force);
+            //leftUpperLeg.AddRelativeForce(0F, forceY, forceZ, ForceMode.Force);
+            //rightUpperLeg.AddRelativeForce(0F, forceY, forceZ, ForceMode.Force);
+        }
     }
 
     private void ReleaseCrossbar()

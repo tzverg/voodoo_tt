@@ -31,9 +31,9 @@ public class UIController : MonoBehaviour
         changeScoreValue = true;
     }
 
-    public static void AddSoresForGrapple()
+    public static void AddSoresNum(int scoreV)
     {
-        scoreValue = scoreValue + 10;
+        scoreValue = scoreValue + scoreV;
         changeScoreValue = true;
     }
 

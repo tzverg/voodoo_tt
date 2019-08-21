@@ -8,6 +8,11 @@ public class GroundCollisionController : MonoBehaviour
     {
         //Debug.Log("ground collision with " + collision.gameObject.name);
 
+        if (!menuPanel.activeSelf && collision.gameObject.name == "LeftFoot")
+        {
+            UIController.AddSoresNum(20);
+        }
+
         menuPanel.SetActive(true);
     }
 }
