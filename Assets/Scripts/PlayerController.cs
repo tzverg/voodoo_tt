@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         //#if UNITY_STANDALONE || UNITY_EDITOR
         //if (Input.GetKey(KeyCode.Space))

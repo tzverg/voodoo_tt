@@ -163,7 +163,7 @@ PlayerSettings:
     Android: com.tzverg_com.voodoo_flip_tt
   buildNumber: {}
   AndroidBundleVersionCode: 1
-  AndroidMinSdkVersion: 22
+  AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
   aotOptions: 

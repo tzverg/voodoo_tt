@@ -77,6 +77,7 @@
     <Compile Include="Assets\Scripts\CrossbarCollisionController.cs" />
     <Compile Include="Assets\Scripts\GroundCollisionController.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\TimeController.cs" />
     <Compile Include="Assets\Scripts\UIController.cs" />
     <None Include="Assets\Shaders\Skybox Cubemap Extended.shader" />
     <Reference Include="Unity.Timeline.Editor">
