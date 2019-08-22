@@ -28,12 +28,6 @@ public class UIController : MonoBehaviour
         #endif
     }
 
-    public static void AddCoin()
-    {
-        scoreValue = ++scoreValue;
-        changeScoreValue = true;
-    }
-
     public static void AddSoresNum(int scoreV)
     {
         scoreValue = scoreValue + scoreV;

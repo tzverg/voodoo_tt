@@ -5,6 +5,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float forceY;
     [SerializeField] private float forceZ;
 
+    private float resultForceY;
+    private float resultForceZ;
+
+    private float halfForceY;
+    private float halfForceZ;
+
+    public static bool mouseButtonDown = false;
+
+    [SerializeField] private Joystick mainJoy;
+
     [SerializeField] private Rigidbody hips;
     [SerializeField] private Rigidbody leftHand;
     [SerializeField] private Rigidbody rightHand;
@@ -53,9 +63,16 @@ public class PlayerController : MonoBehaviour
     {
         if (crossbar != null)
         {
-            hips.AddRelativeForce(0F, forceY, forceZ, ForceMode.Force);
-            //leftUpperLeg.AddRelativeForce(0F, forceY, forceZ, ForceMode.Force);
-            //rightUpperLeg.AddRelativeForce(0F, forceY, forceZ, ForceMode.Force);
+            resultForceY = mainJoy.Horizontal * forceY;
+            resultForceZ = mainJoy.Vertical * forceZ;
+
+            halfForceY = resultForceY * 0.5F;
+            halfForceZ = resultForceZ * 0.5F;
+
+            hips.AddRelativeForce(0F, halfForceY, halfForceZ, ForceMode.Force);
+
+            leftUpperLeg.AddRelativeForce(0F, resultForceY, resultForceZ, ForceMode.Force);
+            rightUpperLeg.AddRelativeForce(0F, resultForceY, resultForceZ, ForceMode.Force);
         }
     }
 
@@ -76,33 +93,35 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        #if UNITY_STANDALONE || UNITY_EDITOR
-        if (Input.GetKey(KeyCode.Space))
+        //#if UNITY_STANDALONE || UNITY_EDITOR
+        //if (Input.GetKey(KeyCode.Space))
+        if (mouseButtonDown)
         {
             TryFlip();
         }
-        if (Input.GetKeyUp(KeyCode.Space))
+        //if (Input.GetKeyUp(KeyCode.Space))
+        if (!mouseButtonDown)
         {
             ReleaseCrossbar();
         }
-        #endif
+        //#endif
 
-        #if UNITY_IOS || UNITY_ANDROID
-        if (Input.touchCount > 0)
-        {
-            for (int i = 0; i < Input.touchCount; ++i)
-            {
-                var currentTouch = Input.GetTouch(i);
-                if (currentTouch.phase == TouchPhase.Stationary)
-                {
-                    TryFlip();
-                }
-                if (currentTouch.phase == TouchPhase.Ended)
-                {
-                    ReleaseCrossbar();
-                }
-            }
-        }
-        #endif
+        //#if UNITY_IOS || UNITY_ANDROID
+        //if (Input.touchCount > 0)
+        //{
+        //    for (int i = 0; i < Input.touchCount; ++i)
+        //    {
+        //        var currentTouch = Input.GetTouch(i);
+        //        if (currentTouch.phase == TouchPhase.Stationary)
+        //        {
+        //            TryFlip();
+        //        }
+        //        if (currentTouch.phase == TouchPhase.Ended)
+        //        {
+        //            ReleaseCrossbar();
+        //        }
+        //    }
+        //}
+        //#endif
     }
 }

@@ -23,7 +23,7 @@ public class CoinController : MonoBehaviour
         if (!paid)
         {
             paid = true;
-            UIController.AddCoin();
+            UIController.AddSoresNum(15);
             Destroy(gameObject);
         }
     }

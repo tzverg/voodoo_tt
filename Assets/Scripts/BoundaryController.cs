@@ -6,12 +6,6 @@ public class BoundaryController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "box")
-        {
-            UIController.AddSoresNum(5);
-            Debug.Log("Box has destroyed");
-        }
-
         Destroy(collision.gameObject);
 
         if (!menuPanel.activeSelf)

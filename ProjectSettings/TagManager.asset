@@ -7,6 +7,7 @@ TagManager:
   - player_hand
   - crossbar
   - box
+  - ground
   layers:
   - Default
   - TransparentFX
