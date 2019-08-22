@@ -9,7 +9,6 @@ public class BoxCollisionController : MonoBehaviour
         if (collision.gameObject.tag != "box" && collision.gameObject.tag != "ground")
         {
             UIController.AddSoresNum(5);
-            Debug.Log("Box has kicked");
         }
     }
 }

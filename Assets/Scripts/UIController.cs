@@ -18,6 +18,7 @@ public class UIController : MonoBehaviour
     public void RestartButton()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        TimeController.paused = false;
     }
     public void ExitButton()
     {

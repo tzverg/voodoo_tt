@@ -5,12 +5,13 @@ public class TimeController : MonoBehaviour
     public GameObject joystick;
     public GameObject scorePanel;
 
-    private bool paused = true;
+    public static bool paused = true;
 
     #region Monobehaviour API
 
     private void Start()
     {
+        SwitchView();
         SetTimeScale();
     }
 
@@ -18,8 +19,12 @@ public class TimeController : MonoBehaviour
     {
         paused = !paused;
 
+        SwitchView();
         SetTimeScale();
+    }
 
+    private void SwitchView()
+    {
         gameObject.SetActive(paused);
         joystick.SetActive(!paused);
         scorePanel.SetActive(!paused);
