@@ -93,35 +93,13 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        //#if UNITY_STANDALONE || UNITY_EDITOR
-        //if (Input.GetKey(KeyCode.Space))
         if (mouseButtonDown)
         {
             TryFlip();
         }
-        //if (Input.GetKeyUp(KeyCode.Space))
         if (!mouseButtonDown)
         {
             ReleaseCrossbar();
         }
-        //#endif
-
-        //#if UNITY_IOS || UNITY_ANDROID
-        //if (Input.touchCount > 0)
-        //{
-        //    for (int i = 0; i < Input.touchCount; ++i)
-        //    {
-        //        var currentTouch = Input.GetTouch(i);
-        //        if (currentTouch.phase == TouchPhase.Stationary)
-        //        {
-        //            TryFlip();
-        //        }
-        //        if (currentTouch.phase == TouchPhase.Ended)
-        //        {
-        //            ReleaseCrossbar();
-        //        }
-        //    }
-        //}
-        //#endif
     }
 }

@@ -6,8 +6,6 @@ public class UIController : MonoBehaviour
 {
     public Text ScoreL;
 
-    public GameObject menuPanelGO;
-
     private static int scoreValue;
     private static bool changeScoreValue;
 
