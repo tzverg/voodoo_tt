@@ -1,7 +1,7 @@
 # Unity generated #
 Temp/
 Library/
-Bin/
+#Bin/
 Packages/
 obj/
 # Visual Studio generated #
